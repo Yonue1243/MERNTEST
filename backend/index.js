@@ -20,6 +20,7 @@ conectarDB()
 
 app.use("/api/usuarios", usuarioRoutes)
 app.use("/api/proyectos", proyectoRoutes); 
+app.use("/api/tareas", tareaRoutes);  
 
 
 const PORT = process.env.PORT || 4000

@@ -8,7 +8,7 @@ import {
 
 import checkAuth from "../middleware/checkAuth.js";
 
-const router = express.router;
+const router = express.Router();
 
 router.post("/",checkAuth, agregarTarea);
 router

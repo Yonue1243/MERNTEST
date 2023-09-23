@@ -27,7 +27,16 @@ const obtenerProyecto = async (req, res) => {
 
   if (proyecto.creador.toString() !== req.usuario._id.toString()) return res.status(401).json({ msg: "Acción no válida" });
 
-  res.json(proyecto);
+
+  //Obtener tareas del proyecto
+
+  const tareas = await Tarea.find().where('proyecto').equals(proyecto._id);
+
+
+  res.json({
+    proyecto,
+    tareas
+  });
 };
 
 const editarProyecto = async (req, res) => {
@@ -76,7 +85,7 @@ const agregarColaborador = async (req, res) => {};
 
 const eliminarColaborador = async (req, res) => {};
 
-const obtenerTareas = async (req, res) => {};
+
 
 export {
   obtenerProyecto,
@@ -84,7 +93,7 @@ export {
   eliminarProyecto,
   agregarColaborador,
   eliminarColaborador,
-  obtenerTareas,
+  
   nuevoProyecto,
   obtenerProyectos,
 };
