@@ -1,10 +1,11 @@
+import express from "express"
 import {
   agregarTarea,
   obtenerTarea,
   actualizarTarea,
   eliminarTarea,
   cambiarEstado,
-} from "../controllers/traeaController.js";
+} from "../controllers/tareaController.js";
 
 import checkAuth from "../middleware/checkAuth.js";
 

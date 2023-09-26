@@ -1,7 +1,7 @@
-import express from 'express'
+import express from "express";
 
 
-import {obtenerProyecto, editarProyecto, eliminarProyecto, agregarColaborador, eliminarColaborador, obtenerTareas,
+import {obtenerProyecto, editarProyecto, eliminarProyecto, agregarColaborador, eliminarColaborador, 
     nuevoProyecto, obtenerProyectos} from '../controllers/proyectoController.js';
 
 

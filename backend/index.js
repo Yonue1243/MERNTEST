@@ -1,30 +1,41 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import conectarDB from './config/db.js';
-import usuarioRoutes from './routes/usuarioRoutes.js'
-import proyectoRoutes from './routes/proyectoRoutes.js'
-import tareaRoutes from './routes/tareaRoutes.js'
-
-
-
-
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import conectarDB from "./config/db.js";
+import usuarioRoutes from "./routes/usuarioRoutes.js";
+import proyectoRoutes from "./routes/proyectoRoutes.js";
+import tareaRoutes from "./routes/tareaRoutes.js";
 
 const app = express();
 app.use(express.json());
 
-dotenv.config()
+dotenv.config();
 
-conectarDB()
+conectarDB();
+
+// Configurar Cors
+
+const whitelist = [process.env.FRONTEND_URL];
+
+const corsOptions = {
+  oirgin: function (origin, callback) {
+    if (whitelist.includes(origin)) {
+        callback(null,true)
+    } else {
+        callback(new Error("Error Cors"))
+    }
+  },
+};
+app.use(cors(corsOptions));
 
 //Routing
 
-app.use("/api/usuarios", usuarioRoutes)
-app.use("/api/proyectos", proyectoRoutes); 
-app.use("/api/tareas", tareaRoutes);  
+app.use("/api/usuarios", usuarioRoutes);
+app.use("/api/proyectos", proyectoRoutes);
+app.use("/api/tareas", tareaRoutes);
 
-
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-    console.log(`Server corriendo en el puerto ${PORT}`)
-})
+  console.log(`Server corriendo en el puerto ${PORT}`);
+});
