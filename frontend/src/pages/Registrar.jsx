@@ -151,7 +151,7 @@ const Registrar = () => {
           to="/"
           className="block text-center my-5 text-slate-500 uppercase text-sm"
         >
-          Ya tienes una cuenta? Logueate
+          ¿Ya tienes una cuenta? Logueate
         </Link>
         <Link
           to="/olvide-password"
