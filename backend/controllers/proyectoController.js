@@ -28,15 +28,8 @@ const obtenerProyecto = async (req, res) => {
   if (proyecto.creador.toString() !== req.usuario._id.toString()) return res.status(401).json({ msg: "Acción no válida" });
 
 
-  //Obtener tareas del proyecto
-
-  const tareas = await Tarea.find().where('proyecto').equals(proyecto._id);
-
-
-  res.json({
-    proyecto,
-    tareas
-  });
+  res.json(
+    proyecto);
 };
 
 const editarProyecto = async (req, res) => {

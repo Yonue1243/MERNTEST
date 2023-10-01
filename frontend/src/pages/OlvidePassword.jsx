@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Alerta from "../components/Alerta";
-import clienteAxios from "./config/clienteAxios";
+import clienteAxios from "../config/clienteAxios";
 const OlvidePassword = () => {
 
   const [email, setEmail] = useState('')
@@ -11,7 +11,7 @@ const OlvidePassword = () => {
     e.preventDefault();
 
     if(email === '' || email.length < 6 ) return setAlerta({
-      msg: "El Email es obligatrio",
+      msg: "El Email es obligatrio o no es valido",
       error: true
     })
 
